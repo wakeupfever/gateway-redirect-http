@@ -132,16 +132,6 @@ const gatewayWarpHistory = document.getElementById('gatewayWarpHistory')
 const gatewayWarpCurrent = document.getElementById('gatewayWarpCurrent')
 const gatewayRedirect = document.getElementById('gatewayRedirect')
 
-
-document.addEventListener('DOMContentLoaded', function () {
-  // Popup加载完成
-  chrome.storage.local.set({ popupStarted: true }, function () {
-    console.log('Popup started flag set.')
-  })
-
-  // 其他popup逻辑...
-})  
-
 /**
  *  chrome.storage.local.get() 的Promise封装
  *  @param {string} [key='web'] -  chrome.storage.local.get() 的key
