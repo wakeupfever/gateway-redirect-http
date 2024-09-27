@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>gateway-redirect-http</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./common.css">
+  <style>
+    .gateway-redirect {
+      width: 100%;
+      height: 100%;
+      border-radius: 4px;
+      box-shadow: 0px 4px 35px 4px rgba(84, 120, 246, 0.1);
+      background-color: rgba(0, 0, 0, 0);
+      padding: 10px 20px;
+      display: flex;
+      flex-direction: column;
+
+      .gateway-input {
+        border: 1px solid #eee;
+        height: 30px;
+        border-radius: 4px;
+        padding: 0 6px;
+        transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
+        &:focus {
+          outline: none;
+          border-color: #409eff;
+        }
+      }
+
+      .gateway-btn {
+        color: red;
+        cursor: pointer;
+        margin: 0 5px;
+      }
+    }
+
+    .gateway-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .gateway-warp {
+      .gateway-item {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+
+        :last-child {
+          margin-bottom: 0;
+        }
+
+        .gateway-alias {
+          margin-right: 10px;
+          width: 100px;
+        }
+
+        .gateway-protocol {
+          margin-right: 10px;
+        }
+        
+        .gateway-host {
+          margin-right: 10px;
+        }
+
+        .gateway-port {
+          margin-right: 10px;
+          width: 80px;
+        }
+      }
+    }
+
+    .gateway-warp-history {
+      flex: 1;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="gateway-redirect" id="gatewayRedirect">
+    <div class="gateway-title">
+      当前操作
+    </div>
+    <div class="gateway-warp" id="gatewayWarpCurrent">
+      <div class="gateway-item">
+        <input type="text" data-type="alias" class="gateway-input gateway-alias" placeholder="alias" />
+
+        <select data-type="protocol" class="gateway-select gateway-protocol" value="http">
+          <option value="http">http</option>
+          <option value="https">https</option>
+        </select>
+        <input type="text" data-type="host" value="127.0.0.1" class="gateway-input gateway-host" placeholder="localhost" />
+        <input type="text" data-type="port" value="8080" class="gateway-input gateway-port" placeholder="port" />
+        <span class="gateway-btn">跳转</span>
+        <span class="gateway-btn">保存</span>
+      </div>
+    </div>
+    <div class="gateway-title">
+      历史记录
+    </div>
+    <div class="gateway-warp gateway-warp-history" id="gatewayWarpHistory">
+    </div>
+  </div>
+</body>
+<script src="./index.js"></script>
+
+</html>
