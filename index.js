@@ -184,7 +184,7 @@ window.onload = async () => {
         const { token = '', location = '' } = await getLocalStorage()
         const baseURL = location.split('/#/')?.[1] ?? ''
         chrome.windows.create({
-          url: `${protocol}://${host}:${port}/#/${baseURL}?token=${token}`,
+          url: `${protocol}://${host}:${port}/#/${baseURL}?token=${encodeURIComponent(token)}&a=2`,
           type: 'normal',
           focused: true
         })
