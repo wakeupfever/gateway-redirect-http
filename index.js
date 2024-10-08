@@ -182,9 +182,10 @@ window.onload = async () => {
       if (itemVal.next) {
         const { protocol, host, port, alias } = itemVal.data
         const { token = '', location = '' } = await getLocalStorage()
+        const repToken = token.replace(/"|'/g, '')
         const baseURL = location.split('/#/')?.[1] ?? ''
         chrome.windows.create({
-          url: `${protocol}://${host}:${port}/#/${baseURL}?token=${encodeURIComponent(token)}&a=2`,
+          url: `${protocol}://${host}:${port}/#/${baseURL}?token=${encodeURIComponent(repToken)}&a=2`,
           type: 'normal',
           focused: true
         })
